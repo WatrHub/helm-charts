@@ -35,7 +35,7 @@ hostAliases: []
 #  - "bar.local"
 
 image: "docker.elastic.co/kibana/kibana"
-imageTag: "8.0.0-SNAPSHOT"
+imageTag: "7.14.0"
 imagePullPolicy: "IfNotPresent"
 
 # additionals labels
@@ -141,6 +141,12 @@ ingress:
   #      - chart-example.local
 
 readinessProbe:
+  failureThreshold: 3
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  successThreshold: 3
+  timeoutSeconds: 5
+livenessProbe:
   failureThreshold: 3
   initialDelaySeconds: 10
   periodSeconds: 10
